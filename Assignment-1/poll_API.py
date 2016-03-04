@@ -5,13 +5,11 @@ import sys
 import requests
 final1 = Flask(__name__)
 
-@final1.route("/")
+@poll_API.route("/")
 def main():
-        #return "Hello World!"
-        #return render_template('index.html')
-		 
+	return render_template('index.html')
 
-    while True:
+   while True:
         # Fetching the response from NY Times through the API
         r = requests.get("http://api.nytimes.com/svc/news/v3/content/nyt/all/24.json?api-key=2bf845abbb668b5d43da6f6387793f27:1:74611818")
     
@@ -23,4 +21,4 @@ def main():
         time.sleep(5)
 	
 if __name__ == "__main__":
-        final1.run()
+        poll_API.run()
