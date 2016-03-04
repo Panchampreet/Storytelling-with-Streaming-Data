@@ -3,7 +3,7 @@ import json
 import time
 import sys
 import requests
-final1 = Flask(__name__)
+poll_API = Flask(__name__)
 
 @poll_API.route("/")
 def main():
