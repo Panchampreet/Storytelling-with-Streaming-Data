@@ -10,35 +10,34 @@ rateTracker = Flask(__name__)
 def main():
 	return render_template('index.html')
 
-  rate = 5
-  last = 0
+  lastInstance = 0
 
   while True:
-      # Polling TimesNewswire API for recent news in the past 24 hours
-      r = requests.get("http://api.nytimes.com/svc/news/v3/content/nyt/all/1.json?api-key=2bf845abbb668b5d43da6f6387793f27:1:74611818")
-    
-      # Recording the timestamps of the API response received at an exponentially generated rate
-      for m in r.json()["results"]:
-          present = time.time()
-        		
-      time.sleep(np.random.exponential(rate))
+ 	line = sys.stdin.readline()
+        save = json.loads(line)
 	
-      if last == 0 :
-          last = present
-          continue
-      rate = present - last
-      print "\n"
-      print json.dumps({"Rate":rate})
-  	  # Creating alerts associated to erratic behavior of the stream rate
+        if lastInstance == 0 :
+             lastInstance = present
+             continue
+        rate = present - lastInstance
+        print "\n"
+
+       # Creating alerts associated to erratic behavior of the stream rate
 	
-	  # Case 1 :- If the rate falls below 20% of the specified value
-      if rate<1:
-                print "\n"
-                print "Woah, too fast!"
-    
-      # Case 2 :- If the rate grows 200% of the specified value	
-      elif rate>10:
-                  print "\n"
-                  print "Too slow..."
-      sys.stdout.flush()
-      last = present		
+       # Case 1 :- If the rate falls below 20% of the specified value
+        if rate<1:
+              message = "This rate of influx of articles is too fast!"
+              d = {rate: message}    
+	
+        # Case 2 :- If the rate grows 200% of the specified value	
+        elif rate>10:
+               message = "This rate of influx of articles is very slow."
+               d = {rate:message}
+			
+        else:
+              message = "This is a favorable rate."
+              d = {rate:message}		
+				
+     print json.dumps(d, indent = 1, separators=(': '))			
+     sys.stdout.flush()
+     lastInstance = present
