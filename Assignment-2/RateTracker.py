@@ -1,3 +1,6 @@
+# This program does the bulk of the work for the assignment. It fetches the output from the
+# 'poll_API.py' program as 
+
 from flask import Flask
 import numpy as np
 import time
