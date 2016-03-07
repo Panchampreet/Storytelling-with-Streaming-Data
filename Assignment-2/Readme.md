@@ -1,3 +1,3 @@
-In this assignment, I have made use of the Times Newswire API from the New York Times. I capture a stream of the articles emitted from the API.
-Following that, I analyze the rate of the stream and display it on the output.
+In this assignment, I have made use of the Times Newswire API from the New York Times. This API is a source of articles and related assets originating at The New York Times and The International Herald Tribune, which are chronologically ordered and provide rich metadata, in contrast to RSS feeds. The response data fields include headlines, summaries, URLs, sections and subsections, bylines, date fields (created, updated, published), indexing terms, media and more.
+In the assignment, I capture a stream of articles emitted from the API. Following that, I analyze the rate of the stream and display it on the output.
 Moreover, I have also setup an alerting system which sends out alerts in print when the rate of the stream goes very high or low, in relation to hard-coded thresholds.
