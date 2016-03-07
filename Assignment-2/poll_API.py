@@ -9,11 +9,12 @@ while True:
         r = requests.get("http://api.nytimes.com/svc/news/v3/content/nyt/all/24.json?api-key=2bf845abbb668b5d43da6f6387793f27:1:74611818")
     
        # The following snippet of code selects the 'results' element from the individual incoming stream components,
-       # and displays them as json to standard output. The time lapse between a pair of responses displayed on the
-       # output is chosen here to be 5 seconds.
+       # and displays them as json to standard output.
+       
+       # For the purposes of this assignment, this putput instead of being displayed on standard output
+       # is piped into another program named 'RateTracker.py', which calculates the rate of the inbound stream
+       # and also executes alerts whenever suitable to a given set of conditions.
 
        for m in r.json()["results"]:
             print json.dumps(m, indent=1)
             sys.stdout.flush()
-        
-       time.sleep(5)
