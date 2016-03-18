@@ -13,6 +13,7 @@ import collections         # This imports a module that facilitates the use of s
 import json                # This imports a module used in deciphering and emission of the JSON data format.
 import numpy as np         # This imports a mathematical module which is used in statistical computations, such as those carried  in this application.
 from TwitterAPI import TwitterAPI  # This imports the module required for accessing the streaming API from twitter.
+import math
 
 # The following line is used to authenticate our access to the API on Twitter's website by filling in the correct consumer key and access key.
 api = TwitterAPI(
@@ -81,7 +82,7 @@ def probability():
 @app.route("/")
 def publishEntropyChange():
 	#if sudden change in entropy post a tweet on twitter
-    if (getEntropy()-last > 0):	
+    if (abs(getEntropy()-last) > 0):	
                                total+=1
     r = api.request('statuses/update', {'status': 'sudden change'+str(total)})
     last = getEntropy()  
