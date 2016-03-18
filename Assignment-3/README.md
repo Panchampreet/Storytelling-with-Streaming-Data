@@ -10,4 +10,6 @@ python fetchTweetData.py | python populateRedis.py
 & decrement.py
 & computeStatistics.py
 
+To execute the application, the above command will have to be executed in a bash shell.
+
 Much of the code in all programs is extended from the code in the corresponding modules provided in this repository by Mike Dewar:- https://github.com/mikedewar/RealTimeStorytelling/tree/master/3.
