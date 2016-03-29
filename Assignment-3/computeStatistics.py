@@ -58,7 +58,7 @@ def probability():
     count = request.args.get('total', '')
     # get the distribution for the language
     print place
-    d = conn.hgetall(PlaceOfTweet)
+    d = conn.hgetall(place)
     # get the count
     try:
       c = d[total]
