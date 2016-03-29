@@ -41,12 +41,12 @@ def createHistogram():
 # The following function calls the above function which created the histogram and displays it on standard output.
 @app.route("/")
 def histogram():
-    #h = buildHistogram()
-    #return json.dumps(h)
+    h = createHistogram()
+    return json.dumps(h)
 
 # The following function computes the entropy of the tweete being received.
 def getEntropy():
-    h = buildHistogram()
+    h = createHistogram()
     return -sum([p*np.log(p) for p in h.values()]) 
     
 
